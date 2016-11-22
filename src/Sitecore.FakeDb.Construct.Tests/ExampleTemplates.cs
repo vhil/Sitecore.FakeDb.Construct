@@ -60,4 +60,13 @@ namespace Sitecore.FakeDb.Construct.Tests
             };
         }
     }
+
+    // abstract classese - should not be read from assemply
+    public abstract class AbstractDbTemplate : ConstructableDbTemplate
+    {
+    }
+
+    public abstract class AbstractStandardValues : ConstructableStandardValues<AbstractDbTemplate>
+    {
+    }
 }

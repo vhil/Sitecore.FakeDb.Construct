@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Reflection;
 using FluentAssertions;
 using NUnit.Framework;
 using Sitecore.Data;
+using Sitecore.Globalization;
 
 namespace Sitecore.FakeDb.Construct.Tests
 {
@@ -11,7 +13,14 @@ namespace Sitecore.FakeDb.Construct.Tests
         [Test]
         public void ConstructDb_FromAssembly_ConstructsRequiredTypes()
         {
-            throw new NotImplementedException();
+            using (var db = DbConstructFactory.ConstructDb(Assembly.GetExecutingAssembly()))
+            {
+                // act
+                var templates = db.Database.Templates.GetTemplates(Language.Parse("en"));
+
+                // assert
+                templates.Should().Contain(x => x.ID == NavigationDbTemplate.TemplateId);
+            }
         }
 
         [Test]

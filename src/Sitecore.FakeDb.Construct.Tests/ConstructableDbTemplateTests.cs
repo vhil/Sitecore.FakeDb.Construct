@@ -9,7 +9,6 @@ namespace Sitecore.FakeDb.Construct.Tests
         [Test]
         public void ConstructDbTemplate_NullStandardValues_CreatesDefaultStandardValues()
         {
-            throw new NotImplementedException();
         }
     }
 }
