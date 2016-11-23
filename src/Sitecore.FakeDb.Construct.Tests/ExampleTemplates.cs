@@ -12,7 +12,7 @@ namespace Sitecore.FakeDb.Construct.Tests
     /// </summary>
     /// <seealso cref="ConstructableDbTemplate" />
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial class NavigationDbTemplate : ConstructableDbTemplate
+    public partial class TestDbTemplate : ConstructableDbTemplate
     {
         protected override void ConstructTemplate(Db db, ConstructableStandardValues standardValues)
         {
@@ -49,14 +49,14 @@ namespace Sitecore.FakeDb.Construct.Tests
     /// Example of generated constructable Standard Values for most common Navigation template
     /// </summary>
     /// <seealso cref="Construct.ConstructableStandardValues{NavigationDbTemplate}" />
-    public class NavigationStandardValues : ConstructableStandardValues<NavigationDbTemplate>
+    public class TestStandardValues : ConstructableStandardValues<TestDbTemplate>
     {
         protected override IDictionary<ID, string> ConstructStandardValues()
         {
             return new Dictionary<ID, string>
             {
-                { NavigationDbTemplate.FieldIds.HideFromNavigation, "" },
-                { NavigationDbTemplate.FieldIds.NavigationTitle, "$name" }
+                { TestDbTemplate.FieldIds.HideFromNavigation, "" },
+                { TestDbTemplate.FieldIds.NavigationTitle, "$name" }
             };
         }
     }

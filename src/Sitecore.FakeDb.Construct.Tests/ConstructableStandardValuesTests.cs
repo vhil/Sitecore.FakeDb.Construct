@@ -11,33 +11,33 @@ namespace Sitecore.FakeDb.Construct.Tests
         public void AssignableDbTemplate_ReturnsTargetType()
         {
             // setup
-            var standardValues = new NavigationStandardValues() as ConstructableStandardValues<NavigationDbTemplate>;
+            var standardValues = new TestStandardValues() as ConstructableStandardValues<TestDbTemplate>;
 
             // act
-            var actualType = standardValues.AssignableDbTemplate;
+            var type = standardValues.AssignableDbTemplate;
 
             // assert
-            actualType.ShouldBeEquivalentTo(typeof(NavigationDbTemplate));
+            type.ShouldBeEquivalentTo(typeof(TestDbTemplate));
         }
 
         [Test]
         public void Indexer_KnownID_ReturnsKnownValue()
         {
             // setup
-            var standardValues = new NavigationStandardValues() as ConstructableStandardValues<NavigationDbTemplate>;
+            var standardValues = new TestStandardValues() as ConstructableStandardValues<TestDbTemplate>;
             
             // act
-            var actualValue = standardValues[NavigationDbTemplate.FieldIds.NavigationTitle];
+            var value = standardValues[TestDbTemplate.FieldIds.NavigationTitle];
 
             // assert
-            actualValue.ShouldBeEquivalentTo("$name");
+            value.ShouldBeEquivalentTo("$name");
         }
 
         [Test]
         public void Indexer_UnknownID_ReturnsEmptyString()
         {
             // setup
-            var standardValues = new NavigationStandardValues() as ConstructableStandardValues<NavigationDbTemplate>;
+            var standardValues = new TestStandardValues() as ConstructableStandardValues<TestDbTemplate>;
 
             // act
             var actualValue = standardValues[ID.NewID];

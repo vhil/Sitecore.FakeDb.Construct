@@ -19,42 +19,100 @@ namespace Sitecore.FakeDb.Construct.Tests
                 var templates = db.Database.Templates.GetTemplates(Language.Parse("en"));
 
                 // assert
-                templates.Should().Contain(x => x.ID == NavigationDbTemplate.TemplateId);
+                templates.Should().Contain(x => x.ID == TestDbTemplate.TemplateId);
             }
         }
 
         [Test]
-        public void ConstructDb_FromAssembly_DoesNotConstructAbstractClasses()
+        public void GetConstructableTemplates_FromAssembly_ReturnsListOfConstructableDbTemplateInstances()
         {
-            throw new NotImplementedException();
+            // setup
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // act
+            var templates = DbConstructFactory.GetConstructableTemplates(assembly);
+
+            // assert
+            templates.Should().NotBeEmpty();
+            templates.Should().NotContain(x => x == null);
+            templates.Should().ContainItemsAssignableTo<ConstructableDbTemplate>();
         }
 
         [Test]
-        public void ConstructDb_StandardValuesBoundToRelevantTemplates()
+        public void GetConstructableTemplates_FromAssembly_DoesNotConstructAbstractClasses()
         {
-            throw new NotImplementedException();
+            // setup
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // act
+            var templates = DbConstructFactory.GetConstructableTemplates(assembly);
+
+            // assert
+            templates.Should().NotContain(x => x.GetType() == typeof (AbstractDbTemplate));
         }
 
         [Test]
-        public void ConstructDb_ExampleTemplates_FieldsBoundCorrectly()
+        public void GetConstructableTemplates_NullParameter_ThrowsArgumentNullException()
         {
-            throw new NotImplementedException();
+            // setup
+            Assembly assembly = null;
+
+            // act
+            Action action = () => DbConstructFactory.GetConstructableTemplates(assembly);
+
+            // assert
+            action.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ConstructDb_ExampleTemplates_StandardValuesAppliedToFakeDb()
+        public void GetConstructableStandardValues_FromAssembly_ReturnsListOfConstructableStandardValuesInstances()
         {
-            throw new NotImplementedException();
+            // setup
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // act
+            var templates = DbConstructFactory.GetConstructableStandardValues(assembly);
+
+            // assert
+            templates.Should().NotBeEmpty();
+            templates.Should().NotContain(x => x == null);
+            templates.Should().ContainItemsAssignableTo<ConstructableStandardValues>();
+        }
+
+        [Test]
+        public void GetConstructableStandardValues_FromAssembly_DoesNotConstructAbstractClasses()
+        {
+            // setup
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // act
+            var templates = DbConstructFactory.GetConstructableStandardValues(assembly);
+
+            // assert
+            templates.Should().NotContain(x => x.GetType() == typeof(AbstractStandardValues));
+        }
+
+        [Test]
+        public void GetConstructableStandardValues_NullParameter_ThrowsArgumentNullException()
+        {
+            // setup
+            Assembly assembly = null;
+
+            // act
+            Action action = () => DbConstructFactory.GetConstructableStandardValues(assembly);
+
+            // assert
+            action.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
         public void ConstructDb_ExampleTemplates_StandardValuesReplaceTokensAppliedCorrectlyToFakeDb()
         {
-            using (var db = DbConstructFactory.ConstructDb(new [] {new NavigationDbTemplate()}, new [] {new NavigationStandardValues()}))
+            using (var db = DbConstructFactory.ConstructDb(new [] {new TestDbTemplate()}, new [] {new TestStandardValues()}))
             {
                 var currentItemId = ID.NewID;
                 // setup
-                var navRootItem = new DbItem("root", currentItemId, NavigationDbTemplate.TemplateId);
+                var navRootItem = new DbItem("root", currentItemId, TestDbTemplate.TemplateId);
 
                 db.Add(navRootItem);
 
@@ -64,7 +122,7 @@ namespace Sitecore.FakeDb.Construct.Tests
 
                 // assert
                 currentItem.Should().NotBeNull();
-                currentItem[NavigationDbTemplate.FieldNames.NavigationTitle].Should().BeEquivalentTo("root");
+                currentItem[TestDbTemplate.FieldNames.NavigationTitle].Should().BeEquivalentTo("root");
             }
         }
     }
