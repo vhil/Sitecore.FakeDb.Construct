@@ -4,12 +4,19 @@ using Sitecore.Data;
 
 namespace Sitecore.FakeDb.Construct
 {
+    /// <summary>
+    /// Base class for constructable standard value types.
+    /// </summary>
     public abstract class ConstructableStandardValues
     {
         public abstract Type AssignableDbTemplate { get; }
         public abstract string this[ID fieldId] { get; }
     }
 
+    /// <summary>
+    /// Base generic class for constructable standard value types.
+    /// </summary>
+    /// <typeparam name="TDbTemplate">The type of the database template.</typeparam>
     public abstract class ConstructableStandardValues<TDbTemplate> : ConstructableStandardValues
         where TDbTemplate : ConstructableDbTemplate
     {

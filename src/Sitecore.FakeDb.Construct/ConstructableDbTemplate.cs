@@ -1,5 +1,8 @@
 ﻿namespace Sitecore.FakeDb.Construct
 {
+    /// <summary>
+    /// Base class for constructable db template types.
+    /// </summary>
     public abstract class ConstructableDbTemplate
     {
         public void ConstructDbTemplate(Db db, ConstructableStandardValues standardValues = null)

@@ -5,9 +5,18 @@ using System.Reflection;
 
 namespace Sitecore.FakeDb.Construct
 {
-	public static class DbConstructFactory
+    /// <summary>
+    /// Entry point into Sitecore.FakeDb.Construct. Provides factory methods to construct Db instance from given assembly or from give lists of templates and standard values.
+    /// </summary>
+    public static class DbConstructFactory
 	{
-	    public static IEnumerable<ConstructableDbTemplate> GetConstructableTemplates(Assembly assembly)
+        /// <summary>
+        /// Gets list of instances of all types derived from ConstructableDbTemplate class.
+        /// </summary>
+        /// <param name="assembly">The assembly with types.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static IEnumerable<ConstructableDbTemplate> GetConstructableTemplates(Assembly assembly)
 	    {
 	        if (assembly == null)
 	        {
@@ -20,6 +29,12 @@ namespace Sitecore.FakeDb.Construct
                 .Select(type => (ConstructableDbTemplate)Activator.CreateInstance(type, null));
         }
 
+        /// <summary>
+        /// Gets list of instances of all types derived from ConstructableStandardValues class.
+        /// </summary>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static IEnumerable<ConstructableStandardValues> GetConstructableStandardValues(Assembly assembly)
         {
             if (assembly == null)
@@ -33,6 +48,11 @@ namespace Sitecore.FakeDb.Construct
                 .Select(type => (ConstructableStandardValues)Activator.CreateInstance(type, null));
         }
 
+        /// <summary>
+        /// Constructs all available types of ConstructableDbTemplate and ConstructableStandardValues in given assembly into new instance of Db type.
+        /// </summary>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns></returns>
         public static Db ConstructDb(Assembly assembly)
 		{
 			return ConstructDb(
@@ -40,6 +60,14 @@ namespace Sitecore.FakeDb.Construct
                 GetConstructableStandardValues(assembly));
 		}
 
+        /// <summary>
+        /// Constructs given types of ConstructableDbTemplate and ConstructableStandardValues into new instance of Db type.
+        /// </summary>
+        /// <param name="templates">List of template types</param>
+        /// <param name="standardValues">List of standard value types</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// </exception>
         public static Db ConstructDb(IEnumerable<ConstructableDbTemplate> templates, IEnumerable<ConstructableStandardValues> standardValues)
         {
             if (templates == null)
