@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.FakeDb.Construct",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.FakeDb.Construct.Tests", "Sitecore.FakeDb.Construct.Tests\Sitecore.FakeDb.Construct.Tests.csproj", "{91ED96A3-4386-4C5C-9238-1186E3D7F52A}"
 EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "TestTransform", "TestTransform\TestTransform.scproj", "{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{91ED96A3-4386-4C5C-9238-1186E3D7F52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91ED96A3-4386-4C5C-9238-1186E3D7F52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91ED96A3-4386-4C5C-9238-1186E3D7F52A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA5310F-B520-4D9A-A9D6-27BDD6F007D9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

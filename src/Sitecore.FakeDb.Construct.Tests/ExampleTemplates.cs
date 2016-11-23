@@ -29,7 +29,7 @@ namespace Sitecore.FakeDb.Construct.Tests
             db.Add(template);
         }
 
-        public static ID TemplateId = new ID("{F16CDC22-CF07-4688-B864-5825FA424C0E}");
+        public static ID TemplateId = new ID("{F26CDC22-CF07-4688-B864-5825FA424C0E}");
         public const string TemplateName = "Navigation";
 
         public static class FieldNames
@@ -40,8 +40,8 @@ namespace Sitecore.FakeDb.Construct.Tests
 
         public static class FieldIds
         {
-            public static ID HideFromNavigation = new ID("{3DB7E755-F283-43E1-BA89-084FC73B272A}");
-            public static ID NavigationTitle = new ID("{3E805864-4A2B-4394-A2A4-99D1CF97ACA8}");
+            public static ID HideFromNavigation = new ID("{4DB7E755-F283-43E1-BA89-084FC73B272A}");
+            public static ID NavigationTitle = new ID("{4E805864-4A2B-4394-A2A4-99D1CF97ACA8}");
         }
     }
 
