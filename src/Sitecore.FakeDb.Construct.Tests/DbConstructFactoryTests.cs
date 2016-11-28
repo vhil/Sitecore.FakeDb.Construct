@@ -110,15 +110,14 @@ namespace Sitecore.FakeDb.Construct.Tests
         {
             using (var db = DbConstructFactory.ConstructDb(new [] {new TestDbTemplate()}, new [] {new TestStandardValues()}))
             {
-                var currentItemId = ID.NewID;
                 // setup
+                var currentItemId = ID.NewID;
                 var navRootItem = new DbItem("root", currentItemId, TestDbTemplate.TemplateId);
 
                 db.Add(navRootItem);
 
-                var currentItem = db.GetItem(currentItemId);
-
                 // act
+                var currentItem = db.GetItem(currentItemId);
 
                 // assert
                 currentItem.Should().NotBeNull();

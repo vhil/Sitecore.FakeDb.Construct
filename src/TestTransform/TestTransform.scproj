@@ -34,10 +34,12 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>.\bin\Debug\</OutputPath>
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
-    <SitecoreWebUrl>http://scut</SitecoreWebUrl>
-    <InstallSitecoreConnector>True</InstallSitecoreConnector>
+    <SitecoreWebUrl>
+    </SitecoreWebUrl>
+    <InstallSitecoreConnector>False</InstallSitecoreConnector>
     <DisableFileDeployment>True</DisableFileDeployment>
-    <SitecoreAccessGuid>7b95b4c5-d68d-4c57-9452-7e6e1353c4f6</SitecoreAccessGuid>
+    <SitecoreAccessGuid>
+    </SitecoreAccessGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
